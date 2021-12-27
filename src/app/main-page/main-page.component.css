@@ -1,0 +1,24 @@
+@media (min-width: 600px) {
+.big-margin{
+    margin: 40px;
+}
+.medium-margin{
+    margin: 20px;
+}
+.card{
+    background-color: #fff;
+}
+}
+@media (max-width: 600px) {
+    .big-margin{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .medium-margin{
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .card{
+        background-color: #fff;
+    }
+}

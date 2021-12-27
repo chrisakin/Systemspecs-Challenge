@@ -1,0 +1,31 @@
+<div id="kangaroo-jump">
+    <div class="section container">
+      <div class="header big-margin">
+          <a routerLink="/home" style="text-decoration:none; color:green"><<< Back Home</a>
+          <br>
+        <h2>Kangaroo Jump History Table</h2>
+      </div>
+    <table class="table table-striped big-margin">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">Index</th>
+        <th scope="col" class="text-center">Starting Position (x1)</th>
+        <th scope="col" class="text-center">Jump Distance (v1)</th>
+        <th scope="col" class="text-center">Starting Position (x2)</th>  
+        <th scope="col" class="text-center">Jump Distance (v2)</th>
+        <th scope="col" class="text-center">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let history of trueData; let i=index" >
+        <th scope="row" class="text-center">{{i + 1}}</th>
+        <td class="text-center">{{history.x1}}</td>
+        <td class="text-center">{{history.x2}}</td>
+        <td class="text-center">{{history.v1}}</td>
+        <td class="text-center">{{history.v2}}</td>
+        <td class="text-center">{{history.result}}</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+</div>

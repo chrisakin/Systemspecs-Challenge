@@ -1,0 +1,105 @@
+<div id="kangaroo-jump">
+    <div class="section container">
+      <div class="header big-margin">
+        <h2>Kangaroo Jump</h2>
+        <div class="text-center">
+            <button type="button" class="btn btn-success " (click)="toTable()" >History Table</button>
+        </div>
+      </div>
+      <div *ngIf="toast != ''">
+      <div *ngIf="toast === 'YES'" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{toast}}, it is possible for the two kangaroos to meet at the same location
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <div *ngIf="toast === 'NO'" class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{toast}}, it is not possible for the two kangaroos to meet at the same location
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     </div>
+      <div class="main-content">
+        <div class="card">
+          <div class="card-content">
+            <form class="form container" #postForm="ngForm" novalidate>
+              <div class="form-group row">
+                  <div class="col-md-5">
+                      <h4 class="text-center medium-margin">Kangaroo 1</h4>
+                    <div class="card container big-margin">
+                        <div class="card-content">
+                            <div class="row medium-margin">
+                                <div class="col-md-12">
+                                    <label for="position"  class=" control-label">Starting Position (x1)</label>
+                                      <div>
+                                          <input type="number"  class="form-control" id="position" name="position" placeholder="Please Input the Starting Position for Kangaroo 1" [(ngModel)]="x1" 
+                                          [ngClass]="{ 'is-invalid': postForm.submitted && !x1 }" 
+                                          required>
+                                      </div>
+                                      <div *ngIf="postForm.submitted && !x1" class="alert alert-danger">
+                                          Starting Position is required
+                                      </div>   
+                                  </div>
+                                </div>
+                                <div class="row medium-margin">
+                                  <div class="col-md-12">
+                                    <label for="distance"  class=" control-label">Jump Distance (v1)</label>
+                                      <div>
+                                          <input type="number"  class="form-control" id="distance" name="distance" placeholder="Please Input the Jump distance for Kangaroo 1" [(ngModel)]="v1" 
+                                          [ngClass]="{ 'is-invalid': postForm.submitted && !v1 }" 
+                                          required>
+                                      </div>
+                                      <div *ngIf="postForm.submitted && !v1" class="alert alert-danger">
+                                          Description is required
+                                      </div>   
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1 medium-margin"></div>
+                  <div class="col-md-5">
+                    <h4 class="text-center medium-margin">Kangaroo 2</h4>
+                    <div class="card container big-margin">
+                        <div class="card-content">
+                            <div class="row medium-margin">
+                                <div class="col-md-12">
+                                    <label for="position2"  class=" control-label">Starting Position (x2)</label>
+                                      <div>
+                                          <input type="number"  class="form-control" id="position2" name="position2" placeholder="Please Input the Starting Position for Kangaroo 2" [(ngModel)]="x2" 
+                                          [ngClass]="{ 'is-invalid': postForm.submitted && !x2 }" 
+                                          required>
+                                      </div>
+                                      <div *ngIf="postForm.submitted && !x2" class="alert alert-danger">
+                                          Description is required
+                                      </div>   
+                                  </div>
+                                </div>
+                                <div class="row medium-margin">
+                                  <div class="col-md-12">
+                                    <label for="distance"  class=" control-label">Jump Distance (v2)</label>
+                                      <div>
+                                          <input type="number"  class="form-control" id="distance" name="distance" placeholder="Please input the jump distance for Kangaroo 2" [(ngModel)]="v2" 
+                                          [ngClass]="{ 'is-invalid': postForm.submitted && !v2 }" 
+                                          required>
+                                      </div>
+                                      <div *ngIf="postForm.submitted && !v2" class="alert alert-danger">
+                                          Description is required
+                                      </div>   
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group medium-margin">
+                <div class="text-center">
+                    <button type="button" class="btn btn-success" (click)="postForm.form.valid && onSubmit()" [disabled]="submitted" title="Click to jump">Jump!</button>
+                    <img *ngIf="submitted" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                </div>
+              </div>
+              <br>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
